@@ -1,5 +1,5 @@
 const BASE_URL = "http://localhost:8080";
-const productList = document.getElementById("product-list");
+const furnitureList = document.getElementById("furniture-list");
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -8,20 +8,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         if (response.ok) {
-            const furnitureList = await response.body();
+            const furnitureListResponse = await response.json();
 
-            furnitureList.forEach(product => {
-                const productDiv = document.createElement("div");
-                productDiv.classList.add("product");
+            furnitureListResponse.forEach(furniture => {
+                const furnitureDiv = document.createElement("div");
+                furnitureDiv.classList.add("furniture");
 
-                productDiv.innerHTML = `
-                    <img src="/images/${product.imageUrl}" alt="Furniture Image">
-                    <h2>${product.name} - ${product.id}</h2>
-                    <h3>${product.category}</h3>
-                    <p>Цена: ${product.price} лв.</p>
+                furnitureDiv.innerHTML = `
+                    <img src="/images/${furniture.imageUrl}" alt="Furniture Image">
+                    <h2>${furniture.name} - ${furniture.id}</h2>
+                    <h3>${furniture.category}</h3>
+                    <p>Цена: ${furniture.price} лв.</p>
                 `;
 
-                productList.appendChild(productDiv);
+                furnitureList.appendChild(furnitureDiv);
             });
         }
     } catch (error) {
