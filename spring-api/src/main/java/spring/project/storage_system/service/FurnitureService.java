@@ -1,5 +1,7 @@
 package spring.project.storage_system.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import spring.project.storage_system.entity.Furniture;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class FurnitureService {
 
     @Autowired
     private FurnitureRepository furnitureRepository;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public ResponseEntity<?> getAllFurniture() {
         return ResponseEntity.ok(furnitureRepository.findAll());
@@ -48,5 +52,18 @@ public class FurnitureService {
 
         furnitureRepository.delete(furniture);
         return ResponseEntity.ok("Furniture was deleted successfully.");
+    }
+
+    public ResponseEntity<?> getFurnitureById(Long furnitureId) {
+        try {
+            Optional<Furniture> furnitureOptional = furnitureRepository.findById(furnitureId);
+            if (furnitureOptional.isEmpty())
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Furniture with this ID does not exist.");
+            String furnitureJson = objectMapper.writeValueAsString(furnitureOptional.get());
+
+            return ResponseEntity.ok(furnitureJson);
+        } catch (JsonProcessingException e) {
+            return ResponseEntity.internalServerError().body("Error converting object to JSON.");
+        }
     }
 }

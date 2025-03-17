@@ -20,12 +20,12 @@ public class FurnitureController {
     }
 
     @PostMapping("/furniture")
-    public ResponseEntity<?> addFurniture(@RequestParam("furniture") Furniture furniture) {
+    public ResponseEntity<?> addFurniture(@RequestBody Furniture furniture) {
         return furnitureService.addFurniture(furniture);
     }
 
     @PutMapping("/furniture/{furnitureId}")
-    public ResponseEntity<?> editFurniture(@RequestParam("furniture") FurnitureRequest furnitureRequest,
+    public ResponseEntity<?> editFurniture(@RequestBody FurnitureRequest furnitureRequest,
                                            @PathVariable Long furnitureId) {
         return furnitureService.editFurniture(furnitureRequest, furnitureId);
     }
@@ -33,5 +33,10 @@ public class FurnitureController {
     @DeleteMapping("/furniture/{furnitureId}")
     public ResponseEntity<?> deleteFurniture(@PathVariable Long furnitureId) {
         return furnitureService.deleteFurniture(furnitureId);
+    }
+
+    @GetMapping("/furniture/{furnitureId}")
+    public ResponseEntity<?> getFurnitureById(@PathVariable Long furnitureId) {
+        return furnitureService.getFurnitureById(furnitureId);
     }
 }
