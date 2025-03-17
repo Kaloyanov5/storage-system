@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 furnitureDiv.classList.add("furniture");
 
                 furnitureDiv.innerHTML = `
-                    <img src="/images/${furniture.imageUrl}" alt="Furniture Image">
+                    <img src="/images/${furniture.imageName}" alt="Furniture Image">
                     <h2>${furniture.name} - ${furniture.id}</h2>
                     <h3>${furniture.category}</h3>
                     <p>Цена: ${furniture.price} лв.</p>
