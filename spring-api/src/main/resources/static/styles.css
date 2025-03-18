@@ -3,13 +3,13 @@ body {
     text-align: center;
 }
 
-#product-list {
+#furniture-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.product {
+.furniture {
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px;
@@ -17,7 +17,7 @@ body {
     width: 200px;
 }
 
-.product img {
-    max-width: 250px;
+.furniture img {
+    max-width: 200px;
     height: auto;
 }
