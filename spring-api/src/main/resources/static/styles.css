@@ -15,9 +15,24 @@ body {
     margin: 10px;
     text-align: center;
     width: 200px;
+    cursor: pointer;
 }
 
 .furniture img {
     max-width: 200px;
     height: auto;
+}
+
+#product-details {
+    margin: 20px;
+}
+
+#product-details img {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#product-details h2, #product-details h3, #product-details p {
+    margin: 10px 0;
 }
