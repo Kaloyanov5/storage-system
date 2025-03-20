@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (response.ok) {
                 const furniture = await response.json();
+                document.title = furniture.name;
 
                 productDetails.innerHTML = `
                     <img src="/images/${furniture.imageName}" alt="Furniture Image">
